@@ -17,16 +17,17 @@ void main() {
 }
 
 class Home extends StatelessWidget {
+  Controller controller = Get.put(Controller());
   addImage(RssItem item) {
     var url = null;
     var enclosureUrl = item.enclosure?.url;
-    var thumbnails =  item.media?.thumbnails;
+    var thumbnails = item.media?.thumbnails;
     var thumbnailsUrl = null;
-    if(thumbnails != null && thumbnails.length > 0){
+    if (thumbnails != null && thumbnails.length > 0) {
       var thumbnail = thumbnails.first;
       thumbnailsUrl = thumbnail.url;
     }
-    url =  enclosureUrl ?? thumbnailsUrl;
+    url = enclosureUrl ?? thumbnailsUrl;
 
     if (url != null) {
       return Container(
@@ -45,7 +46,7 @@ class Home extends StatelessWidget {
     if (url.isNotEmpty) {
       return CircleAvatar(
           radius: 20,
-          backgroundColor: Colors.deepOrangeAccent,
+          backgroundColor: Colors.cyan[100],
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20.0),
             child: Image.network(
@@ -55,12 +56,26 @@ class Home extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ));
+    } else {
+      return CircleAvatar(
+          radius: 20,
+          backgroundColor: Colors.cyan[100],
+          child: Text(controller.itemSite.substring(0, 1)));
     }
+  }
+
+  getFeedList(BuildContext context) {
+    ListView.builder(
+        itemCount: controller.sites.length,
+        itemBuilder: (context, index) {
+          return ListTile(
+            title: Text(controller.sites.elementAt(index)),
+          );
+        });
   }
 
   @override
   Widget build(context) {
-    Controller controller = Get.put(Controller());
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -87,70 +102,17 @@ class Home extends StatelessWidget {
                 // we create center column and display text
                 return Container(
                   child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        const Text('Categories',
-                            style: TextStyle(fontWeight: FontWeight.bold)),
-                        ListTile(
-                          title: Text("Mathrubhumi"),
-                          onTap: () => {
-                            controller.onItemTapped(0),
-                            // controller.selectedIndex.value = 0,
-                            Navigator.pop(context),
-                            // controller.fetchFact()
-                          },
-                        ),
-                        ListTile(
-                            title: Text("24News"),
-                            onTap: () => {
-                                  controller.onItemTapped(1),
-                                  // controller.selectedIndex.value = 1,
-                                  Navigator.pop(context),
-                                  // controller.fetchFact()
-                                }),
-                        ListTile(
-                            title: Text("OneIndia"),
-                            onTap: () => {
-                                  controller.onItemTapped(2),
-                                  // controller.selectedIndex.value = 1,
-                                  Navigator.pop(context),
-                                  // controller.fetchFact()
-                                }),
-                        ListTile(
-                            title: Text("Filmibeat"),
-                            onTap: () => {
-                                  controller.onItemTapped(3),
-                                  // controller.selectedIndex.value = 1,
-                                  Navigator.pop(context),
-                                  // controller.fetchFact()
-                                }),
-                        ListTile(
-                            title: Text("Gizbot"),
-                            onTap: () => {
-                                  controller.onItemTapped(4),
-                                  // controller.selectedIndex.value = 1,
-                                  Navigator.pop(context),
-                                  // controller.fetchFact()
-                                }),
-                        ListTile(
-                            title: Text("CNET"),
-                            onTap: () => {
-                                  controller.onItemTapped(5),
-                                  // controller.selectedIndex.value = 1,
-                                  Navigator.pop(context),
-                                  // controller.fetchFact()
-                                }),
-                        ListTile(
-                            title: Text("OMG Ubuntu"),
-                            onTap: () => {
-                                  controller.onItemTapped(6),
-                                  // controller.selectedIndex.value = 1,
-                                  Navigator.pop(context),
-                                  // controller.fetchFact()
-                                })
-                      ],
-                    ),
+                    child: ListView.builder(
+                        itemCount: controller.sites.length,
+                        itemBuilder: (context, index) {
+                          return ListTile(
+                            title: Text(controller.sites.elementAt(index)),
+                            onTap: () {
+                              controller.onItemTapped(index);
+                              Navigator.pop(context);
+                            },
+                          );
+                        }),
                   ),
                 );
               },
@@ -265,7 +227,7 @@ class Home extends StatelessWidget {
                                             ),
                                           ),
                                           subtitle: Text(item.pubDate == null
-                                              ? " "
+                                              ? "Some time ago"
                                               : timeago.format(DateTime.parse(
                                                   item.pubDate.toString()))),
                                           leading: getRoundedLogo(
@@ -333,7 +295,7 @@ class Controller extends GetxController {
     "https://malayalam.filmibeat.com/rss/filmibeat-malayalam-fb.xml",
     "https://malayalam.gizbot.com/rss/news-fb.xml",
     "https://www.cnet.com/rss/news",
-    "https://www.omgubuntu.co.uk/feed"
+    "https://itsfoss.com/feed/"
   ];
   var sites = [
     "Mathrubhumi",
@@ -342,7 +304,7 @@ class Controller extends GetxController {
     "Filmibeat",
     "Gizbot",
     "CNET",
-    "OMG Ubuntu"
+    "Its Foss"
   ];
   @override
   void onInit() {
