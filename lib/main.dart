@@ -6,7 +6,8 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:webfeed/webfeed.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:intl/intl.dart';
+import 'package:timeago/timeago.dart' as timeago;
+import 'package:share_plus/share_plus.dart';
 
 void main() {
   runApp(GetMaterialApp(
@@ -16,15 +17,45 @@ void main() {
 }
 
 class Home extends StatelessWidget {
-  addImage(url) {
+  addImage(RssItem item) {
+    var url = null;
+    var enclosureUrl = item.enclosure?.url;
+    var thumbnails =  item.media?.thumbnails;
+    var thumbnailsUrl = null;
+    if(thumbnails != null && thumbnails.length > 0){
+      var thumbnail = thumbnails.first;
+      thumbnailsUrl = thumbnail.url;
+    }
+    url =  enclosureUrl ?? thumbnailsUrl;
+
     if (url != null) {
       return Container(
-          child: Image.network(
-        url.toString(),
-        fit: BoxFit.contain,
-      ));
+        padding: EdgeInsets.all(5),
+        child: Image.network(
+          url.toString(),
+          fit: BoxFit.contain,
+        ),
+        color: Colors.white,
+      );
+    } else
+      return Container();
+  }
+
+  getRoundedLogo(String url) {
+    if (url.isNotEmpty) {
+      return CircleAvatar(
+          radius: 20,
+          backgroundColor: Colors.deepOrangeAccent,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),
+            child: Image.network(
+              url,
+              height: 80.0,
+              width: 80.0,
+              fit: BoxFit.cover,
+            ),
+          ));
     }
-    return Container();
   }
 
   @override
@@ -101,6 +132,22 @@ class Home extends StatelessWidget {
                                   // controller.selectedIndex.value = 1,
                                   Navigator.pop(context),
                                   // controller.fetchFact()
+                                }),
+                        ListTile(
+                            title: Text("CNET"),
+                            onTap: () => {
+                                  controller.onItemTapped(5),
+                                  // controller.selectedIndex.value = 1,
+                                  Navigator.pop(context),
+                                  // controller.fetchFact()
+                                }),
+                        ListTile(
+                            title: Text("OMG Ubuntu"),
+                            onTap: () => {
+                                  controller.onItemTapped(6),
+                                  // controller.selectedIndex.value = 1,
+                                  Navigator.pop(context),
+                                  // controller.fetchFact()
                                 })
                       ],
                     ),
@@ -151,7 +198,7 @@ class Home extends StatelessWidget {
       ),
       // extendBody: true,
 
-      backgroundColor: Colors.white,
+      backgroundColor: Color(0xfff9f9f9),
 
       body: Container(
           child: Center(
@@ -172,7 +219,7 @@ class Home extends StatelessWidget {
                               controller.feedlist.length.toString());
                           RssItem item = controller.feedlist[index];
                           log(item.title.toString());
-                          if (index == 0) {
+                          /* if (index == 0) {
                             return Card(
                                 color: Colors.white,
                                 elevation: 0,
@@ -192,38 +239,68 @@ class Home extends StatelessWidget {
                                     textAlign: TextAlign.center,
                                   ),
                                 ));
-                          } else {
-                            return Card(
-                                color: Colors.blue[50],
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)),
-                                elevation: 0,
-                                margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                                child: Column(children: [
-                                  addImage(item.enclosure?.url),
-                                  ListTile(
-                                    contentPadding: EdgeInsets.all(10),
-                                    title: Text(
-                                      item.title.toString(),
-                                      style: TextStyle(color: Colors.black),
+                          } else { */
+                          return Card(
+                              color: Colors.white,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20)),
+                              elevation: 1,
+                              margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Column(children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        border: Border(
+                                            bottom: BorderSide(
+                                                color: Colors.black,
+                                                width: 0.1)),
+                                      ),
+                                      // padding: EdgeInsets.all(12),
+                                      child: ListTile(
+                                          title: Text(
+                                            controller.itemSite,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          subtitle: Text(item.pubDate == null
+                                              ? " "
+                                              : timeago.format(DateTime.parse(
+                                                  item.pubDate.toString()))),
+                                          leading: getRoundedLogo(
+                                              controller.itemLogo),
+                                          trailing: IconButton(
+                                              onPressed: () {
+                                                Share.share(
+                                                    'Did you hear about this? \n' +
+                                                        item.link.toString());
+                                              },
+                                              icon: Icon(Icons.share))),
                                     ),
-                                    subtitle: Text(
-                                      item.description.toString(),
-                                      maxLines: 8,
-                                    ),
-                                    onTap: () async {
-                                      controller.itemUrl = item.link;
-                                      controller.itemTitle = item.title;
-                                      // Get.to(WebLoader());
-                                      await launch(
-                                        item.link.toString(),
-                                        forceWebView: true,
-                                        enableJavaScript: true,
-                                      );
-                                    },
-                                  )
-                                ]));
-                          }
+                                    addImage(item),
+                                    ListTile(
+                                      contentPadding: EdgeInsets.all(10),
+                                      title: Text(
+                                        item.title.toString(),
+                                        style: TextStyle(color: Colors.black),
+                                      ),
+                                      subtitle: Text(
+                                        item.description.toString(),
+                                        maxLines: 8,
+                                      ),
+                                      onTap: () async {
+                                        controller.itemUrl = item.link;
+                                        controller.itemTitle = item.title;
+                                        // Get.to(WebLoader());
+                                        await launch(
+                                          item.link.toString(),
+                                          forceWebView: true,
+                                          enableJavaScript: true,
+                                        );
+                                      },
+                                    )
+                                  ])));
                         },
                       ),
                     ),
@@ -248,19 +325,24 @@ class Controller extends GetxController {
   var itemUrl;
   var itemTitle;
   var itemSite = "Mathrubhumi";
+  var itemLogo;
   var urls = [
     "https://www.mathrubhumi.com/cmlink/mathrubhumi-latestnews-rssfeed-1.1184486",
     "https://www.twentyfournews.com/feed",
     "https://malayalam.oneindia.com/rss/malayalam-news-fb.xml",
     "https://malayalam.filmibeat.com/rss/filmibeat-malayalam-fb.xml",
-    "https://malayalam.gizbot.com/rss/news-fb.xml"
+    "https://malayalam.gizbot.com/rss/news-fb.xml",
+    "https://www.cnet.com/rss/news",
+    "https://www.omgubuntu.co.uk/feed"
   ];
   var sites = [
     "Mathrubhumi",
     "TwentyFour News",
     "OneIndia",
     "Filmibeat",
-    "Gizbot"
+    "Gizbot",
+    "CNET",
+    "OMG Ubuntu"
   ];
   @override
   void onInit() {
@@ -271,13 +353,14 @@ class Controller extends GetxController {
   fetchFact() async {
     factVisible.value = false;
     var response = await http.get(Uri.parse(urls[selectedIndex.value]));
-    // log("Response: " +response.body);
+    log("Response: " + response.body);
     if (response.statusCode == 200) {
       var feed = RssFeed.parse(response.body);
       log("url: " + feed.items!.first.media!.text.toString());
       feedlist.value = feed.items!;
-      RssItem itemSiteTitle = new RssItem(title: itemSite);
-      feedlist.insert(0, itemSiteTitle);
+      itemLogo = feed.image?.url ?? "";
+      /*  RssItem itemSiteTitle = new RssItem(title: itemSite);
+      feedlist.insert(0, itemSiteTitle); */
     }
     factVisible.value = true;
   }

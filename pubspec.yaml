@@ -38,6 +38,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   webfeed: ^0.7.0
   url_launcher: ^6.0.17
+  timeago: ^3.1.0
 
 dev_dependencies:
   flutter_test:
