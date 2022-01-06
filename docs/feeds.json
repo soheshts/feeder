@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Mathrubhumi",
+        "url": "https://www.mathrubhumi.com/cmlink/mathrubhumi-latestnews-rssfeed-1.1184486"
+    },
+    {
+        "name": "TwentyFour News",
+        "url": "https://www.twentyfournews.com/feed"
+    },
+    {
+        "name": "OneIndia",
+        "url": "https://malayalam.oneindia.com/rss/malayalam-news-fb.xml"
+    },
+    {
+        "name": "Filmibeat",
+        "url": "https://malayalam.filmibeat.com/rss/filmibeat-malayalam-fb.xml"
+    },
+    {
+        "name": "Gizbot",
+        "url": "https://malayalam.gizbot.com/rss/news-fb.xml"
+    },
+    {
+        "name": "CNET",
+        "url": "https://www.cnet.com/rss/news"
+    },
+    {
+        "name": "Its Foss",
+        "url": "https://itsfoss.com/feed/"
+    },
+    {
+        "name": "BBC NEWS - World",
+        "url": "http://feeds.bbci.co.uk/news/world/rss.xml"
+    },
+    {
+        "name": "Yahoo Sports",
+        "url": "https://www.yahoo.com/news/rss/sports"
+    },
+    {
+        "name": "Wired",
+        "url": "https://www.wired.com/feed"
+    }
+]
