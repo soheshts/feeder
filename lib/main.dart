@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -189,7 +190,7 @@ class Home extends StatelessWidget {
                           try {
                             formattedTime =
                                 controller.parseRFC822(item.pubDate.toString());
-                          }  catch (exception) {
+                          } catch (exception) {
                             log("message");
                             isException = true;
                           }
@@ -305,7 +306,9 @@ class Controller extends GetxController {
   var itemTitle;
   var itemSite = "Mathrubhumi";
   var itemLogo;
-  var urls = [
+  var urls = [];
+  var sites = [];
+  /* var urls = [
     "https://www.mathrubhumi.com/cmlink/mathrubhumi-latestnews-rssfeed-1.1184486",
     "https://www.twentyfournews.com/feed",
     "https://malayalam.oneindia.com/rss/malayalam-news-fb.xml",
@@ -322,21 +325,37 @@ class Controller extends GetxController {
     "Gizbot",
     "CNET",
     "Its Foss"
-  ];
+  ]; */
   @override
   void onInit() {
     super.onInit();
-    fetchFact();
+    fetchFeedsList();
+    
+  }
+
+  fetchFeedsList() async {
+    var url = "https://soheshts.github.io/feeder/feeds.json";
+    var response = await http.get(Uri.parse(url));
+    log("feedsresponse: " + response.body.toString());
+    if (response.statusCode == 200) {
+      List<dynamic> feeds = jsonDecode(response.body);
+      for (int i = 0; i < feeds.length; i++) {
+        Map<String, String> feed = Map<String,String>.from(feeds.elementAt(i));
+        sites.add(feed["name"]);
+        urls.add(feed["url"]);
+      }
+      fetchFact();
+      log("sites: " + sites.toString());
+    }
   }
 
   fetchFact() async {
     factVisible.value = false;
     var response = await http.get(Uri.parse(urls[selectedIndex.value]));
-    log("Response: " + response.body);
+    // log("Response: " + response.body);
     if (response.statusCode == 200) {
       var feed = RssFeed.parse(response.body);
-      log("url: " + feed.items!.first.media!.text.toString());
-      feedlist.value = feed.items!;
+      feedlist.value = feed.items;
       itemLogo = feed.image?.url ?? "";
       /*  RssItem itemSiteTitle = new RssItem(title: itemSite);
       feedlist.insert(0, itemSiteTitle); */
@@ -347,7 +366,6 @@ class Controller extends GetxController {
   void onItemTapped(int index) {
     selectedIndex.value = index;
     itemSite = sites[index];
-    log("ItemSite: " + itemSite);
     fetchFact();
   }
 
@@ -358,25 +376,3 @@ class Controller extends GetxController {
     return DateTime.parse('${m[3]}-${month.padLeft(2, '0')}-${m[1]}T${m[4]}');
   }
 }
-
-/* class WebLoader extends StatelessWidget {
-  // You can ask Get to find a Controller that is being used by another page and redirect you to it.
-  final Controller c = Get.find();
-  @override
-  Widget build(context) {
-    // Access the updated count variable
-    return Scaffold(
-        appBar: AppBar(leading: BackButton(
-          onPressed: () {
-            Get.back();
-          },
-          color: Colors.black,
-        ),
-        backgroundColor: Colors.white,
-        title: Text(c.itemTitle,style: TextStyle(color: Colors.black))),
-        body: WebView(
-          initialUrl: c.itemUrl,
-        ));
-  }
-}
- */

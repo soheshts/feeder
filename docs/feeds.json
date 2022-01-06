@@ -28,15 +28,399 @@
         "url": "https://itsfoss.com/feed/"
     },
     {
-        "name": "BBC NEWS - World",
-        "url": "http://feeds.bbci.co.uk/news/world/rss.xml"
+        "url": "http://rss.cnn.com/rss/cnn_topstories.rss",
+        "name": "CNN – Top Stories"
     },
     {
-        "name": "Yahoo Sports",
-        "url": "https://www.yahoo.com/news/rss/sports"
+        "url": "http://feeds.feedburner.com/time/topstories",
+        "name": "Time Magazine – Top Stories"
     },
     {
-        "name": "Wired",
-        "url": "https://www.wired.com/feed"
+        "url": "http://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml",
+        "name": "NYTimes – Homepage"
+    },
+    {
+        "url": "https://www.yahoo.com/news/rss/topstories",
+        "name": "Yahoo News – Latest news and headlines"
+    },
+    {
+        "url": "http://feeds.washingtonpost.com/rss/world",
+        "name": "Washington Post"
+    },
+    {
+        "url": "https://www.vox.com/rss/index.xml",
+        "name": "Vox – All"
+    },
+    {
+        "url": "http://feeds.bbci.co.uk/news/world/rss.xml",
+        "name": "BBC News – World"
+    },
+    {
+        "url": "https://www.huffingtonpost.com/section/front-page/feed",
+        "name": "Huffington Post"
+    },
+    {
+        "url": "http://rss.cnn.com/rss/cnn_world.rss",
+        "name": "CNN – World news"
+    },
+    {
+        "url": "http://abcnews.go.com/abcnews/topstories",
+        "name": "ABC News –  Top stories"
+    },
+    {
+        "url": "http://feeds.reuters.com/reuters/topNews?irpc=69",
+        "name": "Reuters – Top stories"
+    },
+    {
+        "url": "http://www.drudgereportfeed.com/rss.xml",
+        "name": "Drudge Report"
+    },
+    {
+        "url": "http://www.marketwatch.com/rss/topstories/",
+        "name": "Market Watch – Top stories"
+    },
+    {
+        "url": "https://www.salon.com/feed/",
+        "name": "Salon.com"
+    },
+    {
+        "url": "http://www.newyorker.com/services/rss/feeds/everything.xml",
+        "name": "New Yorker – Everything"
+    },
+    {
+        "url": "http://www.dailymail.co.uk/articles.rss",
+        "name": "Daily Mail – Latest stories"
+    },
+    {
+        "url": "https://nypost.com/feed/",
+        "name": "New York Post"
+    },
+    {
+        "url": "http://feeds.foxnews.com/foxnews/scitech",
+        "name": "Fox News Science"
+    },
+    {
+        "url": "http://www.feeder.co/add-feed?url=http://feeds.bbci.co.uk/sport/rss.xml?edition=int#",
+        "name": "BBC Sports"
+    },
+    {
+        "url": "http://www.espn.com/espn/rss/news",
+        "name": "ESPN"
+    },
+    {
+        "url": "http://www.nba.com/rss/nba_rss.xml",
+        "name": "NBA.com"
+    },
+    {
+        "url": "http://www.nfl.com/rss/rsslanding?searchString=home",
+        "name": "NFL.com"
+    },
+    {
+        "url": "https://www.yahoo.com/news/rss/sports",
+        "name": "Yahoo Sports"
+    },
+    {
+        "url": "http://newsrss.bbc.co.uk/rss/sportonline_world_edition/front_page/rss.xml",
+        "name": "BBC Sports – World edition"
+    },
+    {
+        "url": "https://www.westhesportsguy.com/feeds/posts/default",
+        "name": "We the sports guys"
+    },
+    {
+        "url": "https://api.foxsports.com/v1/rss?partnerKey=zBaFxRyGKCfxBagJG9b8pqLyndmvo7UU",
+        "name": "Fox Sports"
+    },
+    {
+        "url": "https://talksport.com/rss/sports-news/all/feed",
+        "name": "Talk Sports"
+    },
+    {
+        "url": "https://rss.cbssports.com/rss/headlines/",
+        "name": "CBS Sports"
+    },
+    {
+        "url": "www.fifa.com/rss/index.xml",
+        "name": "Fifa.com"
+    },
+    {
+        "url": "http://nusports.com/rss_feeds.aspx",
+        "name": "NU Sports"
+    },
+    {
+        "url": "https://www.sport1.de/news.rss",
+        "name": "Sport1.de"
+    },
+    {
+        "url": "https://www.triathlonmag.com.au/rss",
+        "name": "TriathlonMag"
+    },
+    {
+        "url": "https://www.issf-sports.org/rss/news.html",
+        "name": "ISSF-sports.org"
+    },
+    {
+        "url": "http://feeds.feedburner.com/Techcrunch",
+        "name": "Techcrunch"
+    },
+    {
+        "url": "http://feeds.wired.com/wired/index",
+        "name": "Wired"
+    },
+    {
+        "url": "http://feeds.nytimes.com/nyt/rss/Technology",
+        "name": "NYTimes – Technology"
+    },
+    {
+        "url": "http://rss.macworld.com/macworld/feeds/main",
+        "name": "MacWorld"
+    },
+    {
+        "url": "http://feeds.pcworld.com/pcworld/latestnews",
+        "name": "PCWorld"
+    },
+    {
+        "url": "http://www.techworld.com/news/rss",
+        "name": "Techworld"
+    },
+    {
+        "url": "https://lifehacker.com/rss",
+        "name": "LifeHacker"
+    },
+    {
+        "url": "http://feeds.feedburner.com/readwriteweb",
+        "name": "ReadWriteWeb"
+    },
+    {
+        "url": "http://www.engadget.com/rss-full.xml",
+        "name": "Engadget.com"
+    },
+    {
+        "url": "http://www.feeder.co/add-feed?url=http://readwrite.com/feed/",
+        "name": "ReadWrite"
+    },
+    {
+        "url": "http://feeds.mashable.com/Mashable",
+        "name": "Mashable"
+    },
+    {
+        "url": "http://feeds.feedburner.com/oreilly/radar/atom",
+        "name": "O&rsquo;Reilly Radar"
+    },
+    {
+        "url": "https://gizmodo.com/rss",
+        "name": "Gizmodo"
+    },
+    {
+        "url": "https://www.technologyreview.com/topnews.rss",
+        "name": "Technology Review"
+    },
+    {
+        "url": "https://venturebeat.com/2013/09/05/venturebeat-rss/",
+        "name": "VentureBeat"
+    },
+    {
+        "url": "http://www.recode.net/rss/index.xml",
+        "name": "Recode.net"
+    },
+    {
+        "url": "http://www.computerworld.com/index.rss",
+        "name": "Computer World"
+    },
+    {
+        "url": "http://feeds.feedburner.com/Makeuseof",
+        "name": "MakeUsOf"
+    },
+    {
+        "url": "http://www.cnet.com/rss/news",
+        "name": "CNet.com"
+    },
+    {
+        "url": "http://feeds.howtogeek.com/HowToGeek",
+        "name": "HowToGeek"
+    },
+    {
+        "url": "http://feeds.feedburner.com/AtlanticBusinessChannel",
+        "name": "Atlantic Business Channel"
+    },
+    {
+        "url": "http://feeder.co/add-feed?url=feeds.feedburner.com/entrepreneur/latest",
+        "name": "Entrepeneur.com"
+    },
+    {
+        "url": "http://feeds.harvardbusiness.org/harvardbusiness/",
+        "name": "Harvard Business"
+    },
+    {
+        "url": "http://freakonomics.com//feed/",
+        "name": "Freakonomics"
+    },
+    {
+        "url": "http://feeds.feedburner.com/TheBigPicture",
+        "name": "The Big Picture"
+    },
+    {
+        "url": "http://feeds.feedburner.com/venturebeat/SZYF",
+        "name": "Venture Beat"
+    },
+    {
+        "url": "http://fortune.com/feed/",
+        "name": "Fortune"
+    },
+    {
+        "url": "http://www.economist.com/rss/the_world_this_week_rss.xml",
+        "name": "Economist"
+    },
+    {
+        "url": "http://www.thenonprofittimes.com/feed/",
+        "name": "The Non-Profit Times"
+    },
+    {
+        "url": "http://www.sbnonline.com/feed/",
+        "name": "SBN Online"
+    },
+    {
+        "url": "https://www.mckinsey.com/insights/rss.aspx",
+        "name": "McKinsey"
+    },
+    {
+        "url": "https://homebusinessmag.com/feed/",
+        "name": "Home Business Mag"
+    },
+    {
+        "url": "http://feeds2.feedburner.com/businessinsider",
+        "name": "Business Insider"
+    },
+    {
+        "url": "http://feeds.feedburner.com/CalculatedRisk",
+        "name": "Calculated Risk"
+    },
+    {
+        "url": "https://www.huffingtonpost.com/section/business/feed",
+        "name": "Huffington Post – Business"
+    },
+    {
+        "url": "http://www.slate.com/articles/news_and_politics/politics.teaser.all.10.rss/",
+        "name": "Slate.com – Politics"
+    },
+    {
+        "url": "http://www.worldaffairsjournal.org/essay-feed.xml",
+        "name": "World Affair Journal"
+    },
+    {
+        "url": "http://feeds.foxnews.com/foxnews/politics",
+        "name": "Fox News – Politics"
+    },
+    {
+        "url": "http://rss.cnn.com/rss/cnn_allpolitics.rss",
+        "name": "CNN Politics"
+    },
+    {
+        "url": "http://feeds.reuters.com/Reuters/PoliticsNews",
+        "name": "Reuters – Politcs"
+    },
+    {
+        "url": "http://rssfeeds.usatoday.com/TP-OnPolitics",
+        "name": "USA Today – Politics"
+    },
+    {
+        "url": "http://www.washingtonexaminer.com/rss/politics",
+        "name": "Washington Examiner"
+    },
+    {
+        "url": "http://online.wsj.com/xml/rss/3_7087.xml",
+        "name": "Wallstreet Journal – Politics"
+    },
+    {
+        "url": "https://www.thenation.com/feed/?post_type=article",
+        "name": "The Nation"
+    },
+    {
+        "url": "http://dailysignal.com//feed/",
+        "name": "Daily Signal"
+    },
+    {
+        "url": "http://www.msnbc.com/feeds/latest",
+        "name": "MSNBC"
+    },
+    {
+        "url": "https://www.politico.com/rss/politics.xml",
+        "name": "Politico"
+    },
+    {
+        "url": "https://www.realwire.com/rss/feeds.asp?cat=Politics",
+        "name": "Realwire"
+    },
+    {
+        "url": "https://www.gamespot.com/feeds/mashup/",
+        "name": "Gamespot"
+    },
+    {
+        "url": "http://www.nintendolife.com/feeds/latest",
+        "name": "Nintendo Life"
+    },
+    {
+        "url": "http://www.joystiq.com/rss.xml",
+        "name": "JoyStiq"
+    },
+    {
+        "url": "http://www.indiegames.com/atom.xml",
+        "name": "Indiegames.com"
+    },
+    {
+        "url": "http://feeds.arstechnica.com/arstechnica/gaming/",
+        "name": "Arstechnica – Gaming"
+    },
+    {
+        "url": "https://www.polygon.com/rss/index.xml",
+        "name": "Polygon"
+    },
+    {
+        "url": "http://toucharcade.com/feed/",
+        "name": "Touch Arcade"
+    },
+    {
+        "url": "http://www.gameinformer.com/p/rss.aspx",
+        "name": "Game Informer"
+    },
+    {
+        "url": "http://news.xbox.com/feed",
+        "name": "Xbox.com – News"
+    },
+    {
+        "url": "https://www.reddit.com/r/gamers/.rss",
+        "name": "/r/gamers – Reddit"
+    },
+    {
+        "url": "http://www.vg247.com/feed/",
+        "name": "vg247"
+    },
+    {
+        "url": "https://mynintendonews.com/feed",
+        "name": "My Nintendo News"
+    },
+    {
+        "url": "https://www.rockpapershotgun.com/feed",
+        "name": "Rock Paper Shotgun"
+    },
+    {
+        "url": "https://www.pcgamesn.com/rss",
+        "name": "pcgamesn.com"
+    },
+    {
+        "url": "http://www.operationsports.com/rss.xml",
+        "name": "Operation Sports"
+    },
+    {
+        "url": "https://kotaku.com/rss",
+        "name": "Kotaku"
+    },
+    {
+        "url": "http://feeds.videogamer.com/rss/allupdates.xml",
+        "name": "Videogamer.com"
+    },
+    {
+        "url": "http://www.pushsquare.com/feeds/latest",
+        "name": "Pushsquare"
     }
 ]
