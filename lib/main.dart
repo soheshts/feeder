@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:webfeed/webfeed.dart';
+// import 'package:webfeed/webfeed.dart';
+import 'package:dart_rss/dart_rss.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:timeago/timeago.dart' as timeago;
 import 'package:share_plus/share_plus.dart';
+import 'package:intl/intl.dart';
 
 void main() {
   runApp(GetMaterialApp(
@@ -177,31 +179,47 @@ class Home extends StatelessWidget {
                         // Provide a builder function. This is where the magic happens.
                         // Convert each item into a widget based on the type of item it is.
                         itemBuilder: (context, index) {
-                          log("length: " +
-                              controller.feedlist.length.toString());
                           RssItem item = controller.feedlist[index];
-                          log(item.title.toString());
-                          /* if (index == 0) {
-                            return Card(
-                                color: Colors.white,
-                                elevation: 0,
-                                // shape: RoundedRectangleBorder(
-                                //     borderRadius: BorderRadius.circular(10)),
-                                margin: EdgeInsets.fromLTRB(0, 0, 0, 20),
-                                child: ListTile(
-                                  title: Text(
-                                    item.title.toString(),
-                                    style: TextStyle(
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  subtitle: Text(
-                                    DateFormat.yMMMd().format(DateTime.now()),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ));
-                          } else { */
+                          final formatter1 =
+                              DateFormat("E, d MMMM yyyy, h:mm:ss a Z");
+
+                          log("real date: " + item.pubDate.toString());
+                          var formattedTime;
+                          var isException = false;
+                          try {
+                            formattedTime =
+                                controller.parseRFC822(item.pubDate.toString());
+                          }  catch (exception) {
+                            log("message");
+                            isException = true;
+                          }
+                          if (isException) {
+                            try {
+                              formattedTime =
+                                  formatter1.parse(item.pubDate.toString());
+                              isException = false;
+                            } on Exception catch (exception) {
+                              isException = true;
+                            }
+                          }
+                          if (isException) {
+                            try {
+                              formattedTime =
+                                  DateTime.parse(item.pubDate.toString());
+                              isException = false;
+                            } on Exception catch (exception) {
+                              isException = true;
+                            }
+                          }
+
+                          log("formattedTime: " + formattedTime.toString());
+                          var dateLocal;
+                          if (!isException) {
+                            dateLocal = formattedTime.toLocal();
+                          } else
+                            dateLocal = null;
+                          log("dateLocal: " + dateLocal.toString());
+
                           return Card(
                               color: Colors.white,
                               shape: RoundedRectangleBorder(
@@ -226,10 +244,9 @@ class Home extends StatelessWidget {
                                               fontWeight: FontWeight.bold,
                                             ),
                                           ),
-                                          subtitle: Text(item.pubDate == null
+                                          subtitle: Text(dateLocal == null
                                               ? "Some time ago"
-                                              : timeago.format(DateTime.parse(
-                                                  item.pubDate.toString()))),
+                                              : timeago.format(dateLocal)),
                                           leading: getRoundedLogo(
                                               controller.itemLogo),
                                           trailing: IconButton(
@@ -332,6 +349,13 @@ class Controller extends GetxController {
     itemSite = sites[index];
     log("ItemSite: " + itemSite);
     fetchFact();
+  }
+
+  DateTime parseRFC822(String s) {
+    const mn = 'Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec';
+    final m = RegExp('(\\d+) ($mn) (\\d+) (.*)').firstMatch(s)!;
+    final month = '${mn.indexOf(m[2]!) ~/ 4 + 1}';
+    return DateTime.parse('${m[3]}-${month.padLeft(2, '0')}-${m[1]}T${m[4]}');
   }
 }
 
