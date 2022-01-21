@@ -30,7 +30,107 @@
     {
         "name": "Its Foss",
         "url": "https://itsfoss.com/feed/"
-    },
+    },    
+   {
+      "name":"The Quint",
+      "url":"https://prod-qt-images.s3.amazonaws.com/production/thequint/feed.xml"
+   },
+   {
+      "name":"Tentaran",
+      "url":"https://www.tentaran.com/feed/"
+   },
+   {
+      "name":"Dkoding",
+      "url":"https://www.dkoding.in/feed/"
+   },
+   {
+      "name":"See Latest",
+      "url":"https://www.seelatest.com/rss/latest-feed"
+   },
+   {
+      "name":"Gud Story",
+      "url":"https://www.gudstory.com/feed/"
+   },
+   {
+      "name":"FirstPost India",
+      "url":"https://www.firstpost.com/rss/india.xml"
+   },
+   {
+      "name":"FirstPost Photos",
+      "url":"https://www.firstpost.com/rss/photos.xml"
+   },
+   {
+      "name":"NASA",
+      "url":"https://www.nasa.gov/rss/dyn/breaking_news.rss"
+   },
+   {
+      "name":"NASA Image",
+      "url":"https://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss"
+   },
+   {
+      "name":"Science Daily",
+      "url":"https://www.sciencedaily.com/rss/all.xml"
+   },
+   {
+      "name":"Discovery Education",
+      "url":"https://blog.discoveryeducation.com/feed/"
+   },
+   {
+      "name":"PBS Nature Blog",
+      "url":"https://www.pbs.org/wnet/nature/blog/feed/"
+   },
+   {
+      "name":"Storytime Magazine",
+      "url":"https://www.storytimemagazine.com/news/feed/"
+   },
+   {
+      "name":"Tinkerlab",
+      "url":"https://tinkerlab.com/feed/"
+   },
+   {
+      "name":"BuzzFeed",
+      "url":"https://www.buzzfeed.com/rss"
+   },
+   {
+      "name":"Smithsonian Magazine",
+      "url":"https://www.smithsonianmag.com/rss/articles/"
+   },
+   {
+      "name":"NDTV News",
+      "url":"http://feeds.feedburner.com/NDTV-LatestNews"
+   },
+   {
+      "name":"India Today",
+      "url":"https://www.indiatoday.in/rss/1206578"
+   },
+   {
+      "name":"The Indian Express",
+      "url":"https://indianexpress.com/feed/"
+   },
+   {
+      "name":"The Hindu",
+      "url":"https://www.thehindu.com/news/national/?service=rss"
+   },
+   {
+      "name":"News 18",
+      "url":"http://www.news18.com/rss/india.xml"
+   },
+   {
+      "name":"Business Standard",
+      "url":"https://www.business-standard.com/rss/latest.rss"
+   },
+   {
+      "name":"DNA",
+      "url":"https://www.dnaindia.com/feeds/india.xml"
+   },
+   {
+      "name":"Deccan Chronicle",
+      "url":"https://www.deccanchronicle.com/rss_feed/"
+   },
+   {
+      "name":"Free Press Journal",
+      "url":"https://prod-qt-images.s3.amazonaws.com/production/freepressjournal/feed.xml"
+   },
     {
         "url": "http://rss.cnn.com/rss/cnn_topstories.rss",
         "name": "CNN – Top Stories"
